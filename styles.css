@@ -1,15 +1,20 @@
 :root {
-  color-scheme: light;
-  --paper: #f7f1e3;
-  --paper-dim: #efe4cd;
-  --paper-raised: #fffcf5;
-  --ink: #211d16;
-  --ink-soft: #554f3d;
-  --ink-faint: #766e55;
-  --line: #ddd0b0;
-  --line-soft: #eae0c4;
-  --amber: #c97a3a;
-  --amber-soft: #f2a35c;
+  /* Pulled directly from Findin's own src/app/globals.css dark-mode tokens,
+     not the portfolio site's palette - this page should look like Findin. */
+  color-scheme: dark;
+  --paper: #1b1f1c;
+  --paper-dim: #151815;
+  --paper-raised: #232723;
+  --ink: #ece7da;
+  --ink-soft: #c7c2b0;
+  --ink-faint: #9aa19a;
+  --line: #383d37;
+  --line-soft: #2b302a;
+  --amber: #d2a43f;
+  --amber-soft: #e3bd66;
+  --geography: #6fa8bd;
+  --taxonomy: #7fa286;
+  --time: #c98564;
 }
 
 * {
@@ -100,6 +105,18 @@ a {
   text-transform: uppercase;
 }
 
+.eyebrow.geography {
+  color: var(--geography);
+}
+
+.eyebrow.taxonomy {
+  color: var(--taxonomy);
+}
+
+.eyebrow.time {
+  color: var(--time);
+}
+
 h1,
 h2,
 h3 {
@@ -184,7 +201,7 @@ p {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--paper-raised);
-  box-shadow: 0 10px 30px -18px rgba(33, 29, 22, 0.35);
+  box-shadow: 0 20px 46px -24px rgba(0, 0, 0, 0.6);
 }
 
 .shot figcaption {
@@ -323,6 +340,18 @@ section:first-of-type,
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+.kicker.geography {
+  color: var(--geography);
+}
+
+.kicker.taxonomy {
+  color: var(--taxonomy);
+}
+
+.kicker.time {
+  color: var(--time);
 }
 
 .list-plain {

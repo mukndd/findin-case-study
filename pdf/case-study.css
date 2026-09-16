@@ -4,12 +4,13 @@
 }
 
 :root {
-  --paper: #f7f1e3;
-  --surface: #fffcf5;
-  --line: #ddd0b0;
-  --ink: #211d16;
-  --muted: #554f3d;
-  --amber: #c97a3a;
+  /* Findin's own dark-mode tokens from src/app/globals.css, not a borrowed palette. */
+  --paper: #1b1f1c;
+  --surface: #232723;
+  --line: #383d37;
+  --ink: #ece7da;
+  --muted: #9aa19a;
+  --amber: #d2a43f;
 }
 
 * {

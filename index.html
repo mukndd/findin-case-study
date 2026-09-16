@@ -95,7 +95,7 @@
       <section id="architecture">
         <div class="wrap">
           <div class="section-head">
-            <p class="eyebrow">Architecture</p>
+            <p class="eyebrow geography">Architecture</p>
             <h2>Provider data becomes playable content.</h2>
           </div>
           <img class="shot" style="padding:0;margin-bottom:14px" src="assets/diagrams/architecture.svg" alt="Findin architecture diagram: provider sources flow through ingestion and quality gates into a Supabase catalogue, then into server-authoritative game routes and the Next.js client" />
@@ -105,7 +105,7 @@
       <section id="systems">
         <div class="wrap">
           <div class="section-head">
-            <p class="eyebrow">Systems</p>
+            <p class="eyebrow taxonomy">Systems</p>
             <h2>What I built.</h2>
           </div>
           <ul class="grid two list-plain" style="padding-left:0;list-style:none">
@@ -124,7 +124,7 @@
       <section id="data">
         <div class="wrap">
           <div class="section-head">
-            <p class="eyebrow">Data</p>
+            <p class="eyebrow taxonomy">Data</p>
             <h2>Why the pipeline exists.</h2>
             <p>Findin does not treat "found a provider record" as the same thing as "safe to put in front of players." The code distinguishes discovered, review-required, Practice-ready, and Daily-ready content. Daily eligibility currently requires published/playable rows plus quality thresholds and a defensive in-process readiness check.</p>
             <p>That defensive posture shows up throughout the repo: source records for provenance, explicit content states, Field Notes validation, common-name checks, provider confidence labels, media/license handling, and hard failures for broad or ambiguous evidence when it would make a WHEN answer misleading.</p>
@@ -135,7 +135,7 @@
       <section id="paleogeography">
         <div class="wrap">
           <div class="section-head">
-            <p class="eyebrow">Paleogeography</p>
+            <p class="eyebrow time">Paleogeography</p>
             <h2>Ancient animals are not just modern dots.</h2>
             <p>For extinct animals with cached reconstruction data, gameplay can render a paleogeographic coastline and use reconstructed fossil coordinates for WHERE scoring. The GPlates path is intentionally offline: ingestion prepares cache rows, while gameplay routes read only from the cache and fall back instead of making live scientific API calls.</p>
             <p>The globe interaction exists in the product as an experimental surface; the production-safe case-study claim is narrower: the map/timeline Daily flow is real, and paleo cache support is implemented with fallback behavior.</p>
@@ -146,7 +146,7 @@
       <section id="daily">
         <div class="wrap">
           <div class="section-head">
-            <p class="eyebrow">Daily</p>
+            <p class="eyebrow time">Daily</p>
             <h2>Reproducible game state.</h2>
             <p>A Daily puzzle has to be identical for every player on that day and stay stable across refreshes, deploys, and future content edits. Findin resolves a puzzle server-side, stores the assignment, freezes an animal snapshot, and reconstructs score state by replaying persisted guesses through the same pure game engine used locally.</p>
             <p>The rotation layer hard-excludes animals already used in the current deck before balancing runs. That makes no-repeat behavior a structural rule rather than a preference that weighted randomness can override.</p>
@@ -184,19 +184,19 @@
           </div>
 
           <div class="decision">
-            <p class="kicker">Content pipeline</p>
+            <p class="kicker taxonomy">Content pipeline</p>
             <h3>Run ingestion, rescue, validation, and editorial staging offline.</h3>
             <p><strong>Problem:</strong> provider data is inconsistent across living and extinct animals. <strong>Trade-off:</strong> content growth is slower, but gameplay stays fast and reproducible instead of calling providers during play.</p>
           </div>
 
           <div class="decision">
-            <p class="kicker">Paleogeography</p>
+            <p class="kicker geography">Paleogeography</p>
             <h3>Cache GPlates-derived coastlines and fossil coordinates ahead of time.</h3>
             <p><strong>Problem:</strong> extinct animals should not be judged only against modern geography. <strong>Trade-off:</strong> unsupported ages fall back to the modern map rather than making live scientific API calls from the game.</p>
           </div>
 
           <div class="decision">
-            <p class="kicker">Daily rotation</p>
+            <p class="kicker time">Daily rotation</p>
             <h3>Hard no-repeat rotation, then score the remaining candidates.</h3>
             <p><strong>Problem:</strong> random Daily selection can repeat or overuse weak content. <strong>Trade-off:</strong> the eligible pool has to be healthy; when it's small, the planner prioritizes correctness over variety.</p>
           </div>
