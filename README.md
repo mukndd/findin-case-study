@@ -20,7 +20,7 @@ This folder is a standalone, recruiter-safe showcase package for the private Fin
 - Production build: passed, 29 app routes generated.
 - Content catalog: 578 total candidates (282 prehistoric, 296 modern) - 80 published/playable, 493 review-required.
 - Launch manifest: 60 species specifically reviewed and verified (`scripts/content/manifests/launch-60.json`), a curated subset of the 80 published rows.
-- The previously documented Railway deployment URL returned HTTP 404 on `/`, `/daily`, `/practice`, and `/leaderboard` during verification, so no live demo is linked anywhere in this export.
+- Live demo: `https://findin.world` - the older documented Railway URL (`findin.up.railway.app`) is retired and returns HTTP 404, but `railway status` shows the actual service Online on the custom domain, and `/`, `/daily`, `/practice`, and `/leaderboard` all returned 200 there on 2026-09-16 (a live render of `/daily` showed the same Daily Creature #259 as the local screenshot, confirming it's the same environment).
 
 ## Public-Safety Notes
 
