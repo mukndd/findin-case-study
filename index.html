@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Findin Case Study</title>
+    <meta name="description" content="A public, recruiter-safe engineering case study for Findin, a WHERE and WHEN guessing game for living and extinct animals." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <div class="brand"><img src="assets/logo/logo.png" alt="" /> Findin</div>
+        <nav class="nav-links">
+          <a href="#product">Product</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#decisions">Decisions</a>
+          <a href="#limits">Limits</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <p class="eyebrow">Recruiter-safe case study</p>
+            <h1>Findin</h1>
+            <p class="lead">A WHERE and WHEN guessing game for living and extinct animals, built around reproducible daily puzzles and cautious scientific content handling.</p>
+            <div class="hero-meta">
+              <span class="pill">Role: builder (ownership pending confirmation)</span>
+              <span class="pill">Project type: private full-stack product</span>
+              <span class="pill">Next.js · React · TypeScript</span>
+              <span class="pill">Supabase</span>
+              <span class="pill">GPlates-derived paleogeography</span>
+            </div>
+            <div class="cta-row">
+              <a class="button secondary" href="#limits">Current status</a>
+            </div>
+          </div>
+
+          <figure class="shot">
+            <img src="assets/screenshots/daily-gameplay.png" alt="Findin Daily gameplay showing evidence notes, a world map, and a geological time bar" />
+            <figcaption>Real local Daily screen, captured from the running app. The previously documented public deployment URL was not reachable during verification, so no live demo is linked.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap grid four">
+          <div class="fact">
+            <p>Product</p>
+            <p>A browser game where players infer where an animal lived and when it existed.</p>
+          </div>
+          <div class="fact">
+            <p>State</p>
+            <p>Built and locally runnable; the previously documented Railway URL returns 404, so no public demo is linked.</p>
+          </div>
+          <div class="fact">
+            <p>Runtime</p>
+            <p>Next.js, React, TypeScript, Supabase/Postgres, PostHog, Vitest.</p>
+          </div>
+          <div class="fact">
+            <p>Data</p>
+            <p>Provider evidence is staged, normalized, scored, and gated before it can become Daily or Practice content.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="why">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">Why I Built It</p>
+            <h2>"Where" should also mean "when."</h2>
+            <p>Regular geography games stop at the present. I wanted a version where "where" also means "when" &mdash; where paleogeography, deep time, and species-occurrence evidence turn a guessing game into something that teaches you the planet has looked very different before.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="product">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">The Product</p>
+            <h2>What the player does.</h2>
+            <p>A player starts with evidence about an animal without being given the answer. They make a WHERE guess on a map, then make a WHEN guess on a geological time bar. Once both parts are complete, the app can reveal the animal and explain the answer.</p>
+            <p>The product idea is simple on purpose: the engineering work is in making those clues, maps, dates, and results trustworthy enough that the game can teach rather than merely decorate.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="architecture">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">Architecture</p>
+            <h2>Provider data becomes playable content.</h2>
+          </div>
+          <img class="shot" style="padding:0;margin-bottom:14px" src="assets/diagrams/architecture.svg" alt="Findin architecture diagram: provider sources flow through ingestion and quality gates into a Supabase catalogue, then into server-authoritative game routes and the Next.js client" />
+        </div>
+      </section>
+
+      <section id="systems">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">Systems</p>
+            <h2>What I built.</h2>
+          </div>
+          <ul class="grid two list-plain" style="padding-left:0;list-style:none">
+            <li class="card">Server-authoritative Daily sessions and scoring</li>
+            <li class="card">Practice mode using the published/playable catalog</li>
+            <li class="card">Daily snapshots for reproducible puzzle state</li>
+            <li class="card">Hard no-repeat Daily rotation before balancing</li>
+            <li class="card">GBIF, PBDB, Wikidata, Wikipedia, and GPlates-oriented ingestion paths</li>
+            <li class="card">Supabase migrations for content lifecycle, source records, paleo cache, and leaderboards</li>
+            <li class="card">Quality gates for identity, taxonomy, geography, time, paleo support, media, Field Notes, and recognizability</li>
+            <li class="card">PostHog instrumentation through a typed event catalog</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="data">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">Data</p>
+            <h2>Why the pipeline exists.</h2>
+            <p>Findin does not treat "found a provider record" as the same thing as "safe to put in front of players." The code distinguishes discovered, review-required, Practice-ready, and Daily-ready content. Daily eligibility currently requires published/playable rows plus quality thresholds and a defensive in-process readiness check.</p>
+            <p>That defensive posture shows up throughout the repo: source records for provenance, explicit content states, Field Notes validation, common-name checks, provider confidence labels, media/license handling, and hard failures for broad or ambiguous evidence when it would make a WHEN answer misleading.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="paleogeography">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">Paleogeography</p>
+            <h2>Ancient animals are not just modern dots.</h2>
+            <p>For extinct animals with cached reconstruction data, gameplay can render a paleogeographic coastline and use reconstructed fossil coordinates for WHERE scoring. The GPlates path is intentionally offline: ingestion prepares cache rows, while gameplay routes read only from the cache and fall back instead of making live scientific API calls.</p>
+            <p>The globe interaction exists in the product as an experimental surface; the production-safe case-study claim is narrower: the map/timeline Daily flow is real, and paleo cache support is implemented with fallback behavior.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="daily">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">Daily</p>
+            <h2>Reproducible game state.</h2>
+            <p>A Daily puzzle has to be identical for every player on that day and stay stable across refreshes, deploys, and future content edits. Findin resolves a puzzle server-side, stores the assignment, freezes an animal snapshot, and reconstructs score state by replaying persisted guesses through the same pure game engine used locally.</p>
+            <p>The rotation layer hard-excludes animals already used in the current deck before balancing runs. That makes no-repeat behavior a structural rule rather than a preference that weighted randomness can override.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="verification">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">Data + Verification</p>
+            <h2>Reproduced from the live repository, not reused numbers.</h2>
+          </div>
+          <div class="grid four">
+            <div class="card fact"><p></p><p style="font-size:22px;color:var(--ink);margin-bottom:4px">578</p><p>total content candidates (282 prehistoric, 296 modern)</p></div>
+            <div class="card fact"><p></p><p style="font-size:22px;color:var(--ink);margin-bottom:4px">80</p><p>published/playable rows; 493 still review-required</p></div>
+            <div class="card fact"><p></p><p style="font-size:22px;color:var(--ink);margin-bottom:4px">60</p><p>species specifically reviewed &amp; verified for a launch manifest</p></div>
+            <div class="card fact"><p></p><p style="font-size:22px;color:var(--ink);margin-bottom:4px">328</p><p>passing tests across 53 test files</p></div>
+          </div>
+          <p class="note" style="margin-top:14px">Typecheck and lint pass clean on app code; production build succeeds and generates 29 app routes. Re-run against the local repository during this audit, not carried over from an old report.</p>
+        </div>
+      </section>
+
+      <section id="decisions">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">Decisions</p>
+            <h2>Engineering trade-offs.</h2>
+          </div>
+
+          <div class="decision">
+            <p class="kicker">Reproducibility</p>
+            <h3>Persist a Daily puzzle row with a frozen animal snapshot.</h3>
+            <p><strong>Problem:</strong> gameplay needs stable answers even when animal records improve later. <strong>Trade-off:</strong> older puzzle snapshots can become historically stale, but a player never sees the answer move underneath them.</p>
+          </div>
+
+          <div class="decision">
+            <p class="kicker">Content pipeline</p>
+            <h3>Run ingestion, rescue, validation, and editorial staging offline.</h3>
+            <p><strong>Problem:</strong> provider data is inconsistent across living and extinct animals. <strong>Trade-off:</strong> content growth is slower, but gameplay stays fast and reproducible instead of calling providers during play.</p>
+          </div>
+
+          <div class="decision">
+            <p class="kicker">Paleogeography</p>
+            <h3>Cache GPlates-derived coastlines and fossil coordinates ahead of time.</h3>
+            <p><strong>Problem:</strong> extinct animals should not be judged only against modern geography. <strong>Trade-off:</strong> unsupported ages fall back to the modern map rather than making live scientific API calls from the game.</p>
+          </div>
+
+          <div class="decision">
+            <p class="kicker">Daily rotation</p>
+            <h3>Hard no-repeat rotation, then score the remaining candidates.</h3>
+            <p><strong>Problem:</strong> random Daily selection can repeat or overuse weak content. <strong>Trade-off:</strong> the eligible pool has to be healthy; when it's small, the planner prioritizes correctness over variety.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="limits">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">Current Limitations</p>
+            <h2>What this is not yet.</h2>
+          </div>
+          <ul class="list-plain">
+            <li>Not presented here as a public launch with proven traction.</li>
+            <li>The previously documented Railway URL returned 404 during verification &mdash; no live demo link is shown.</li>
+            <li>Rate limiting depends on external Upstash configuration; not independently re-verified this pass.</li>
+            <li>PostHog event arrival still needs owner-dashboard confirmation.</li>
+            <li>Of 578 total content candidates, 80 are published/playable and 493 are still review-required &mdash; the stricter Daily-ready pool is smaller still, a product constraint rather than a number to inflate.</li>
+            <li>The globe view is an experimental surface, not the production-safe claim; the map/timeline flow is what's verified as real.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="demonstrates">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">What This Demonstrates</p>
+            <h2>Turning messy scientific data into something that has to be right.</h2>
+            <p>Findin required treating "the data provider said so" as a starting point, not an answer &mdash; building offline ingestion, validation, and quality gates so a wrong or ambiguous record can't quietly become a puzzle. It also required server-authoritative game design (a Daily puzzle that can't be re-derived differently after the fact), and being explicit about which surfaces are production-safe versus experimental rather than presenting everything as equally finished.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="evidence">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow">Evidence</p>
+            <h2>Verification notes.</h2>
+            <p>Claims on this page were checked against the local Findin repository on September 16, 2026: package scripts, Supabase migrations, game routes, planner code, content pipeline scripts, tests, phase reports, git history, and a local browser render of Daily gameplay.</p>
+            <p class="note">Stronger claims about original motivation, exact collaboration model, public repo visibility, production traffic, and real user outcomes stay out until confirmed directly by the owner.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">Public-safe export. No application source code, private repository links, account identifiers, or internal deployment identifiers are included.</div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Findin Recruiter Case Study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="case-study.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <div>
+          <h1>Findin</h1>
+          <p class="lead">A WHERE and WHEN guessing game for living and extinct animals, built around reproducible daily puzzles and cautious scientific content handling.</p>
+          <div class="meta">
+            <span class="pill">Role: builder (ownership pending confirmation)</span>
+            <span class="pill">Private full-stack product</span>
+            <span class="pill">Next.js</span>
+            <span class="pill">TypeScript</span>
+            <span class="pill">Supabase</span>
+          </div>
+        </div>
+        <figure class="shot">
+          <img src="../assets/screenshots/daily-gameplay.png" alt="Findin Daily gameplay with evidence notes, a world map, and a geological time bar" />
+          <figcaption class="caption">Real local Daily screen, captured from the running app. No live demo is linked; the previously documented URL returned 404.</figcaption>
+        </figure>
+      </section>
+
+      <section class="section grid three">
+        <div class="card stat"><strong>80</strong><span>published/playable content rows</span></div>
+        <div class="card stat"><strong>578</strong><span>total content candidates staged</span></div>
+        <div class="card stat"><strong>328</strong><span>passing tests, 53 test files</span></div>
+      </section>
+
+      <section class="section">
+        <h2>System Summary</h2>
+        <div class="arch">
+          <div class="node">Provider sources<br />GBIF, PBDB, GPlates</div>
+          <div class="arrow">&rarr;</div>
+          <div class="node">Offline ingestion<br />+ quality gates</div>
+          <div class="arrow">&rarr;</div>
+          <div class="node">Supabase catalog</div>
+        </div>
+        <div class="arch" style="margin-top: 0.07in">
+          <div class="node">Browser (Daily / Practice)</div>
+          <div class="arrow">&harr;</div>
+          <div class="node">Server-authoritative routes</div>
+          <div class="arrow">&harr;</div>
+          <div class="node">Frozen Daily snapshot</div>
+        </div>
+      </section>
+
+      <section class="section grid two">
+        <div>
+          <h2>Key Engineering Decisions</h2>
+          <ul>
+            <li>Persist a Daily puzzle row with a frozen animal snapshot, so a player never sees the answer move underneath them.</li>
+            <li>Run ingestion, rescue, and validation offline so gameplay never depends on live provider calls.</li>
+            <li>Cache GPlates-derived coastlines and fossil coordinates ahead of time, with fallback to the modern map for unsupported ages.</li>
+            <li>Apply a hard no-repeat Daily rotation before scoring the remaining candidates for balance.</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Data + Quality</h2>
+          <ul>
+            <li>Provider evidence is normalized and gated through explicit content states before it can become playable.</li>
+            <li>Quality gates cover taxonomy, WHERE, WHEN, paleo support, media, and Field Notes.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section grid two">
+        <div>
+          <h2>Limitations</h2>
+          <ul>
+            <li>No live demo link; the previously documented Railway URL returned 404.</li>
+            <li>Of 578 staged candidates, 80 are published/playable; the Daily-ready pool is smaller still.</li>
+            <li>The globe view is experimental; the map/timeline flow is the production-safe claim.</li>
+          </ul>
+        </div>
+        <div>
+          <h2>What It Demonstrates</h2>
+          <p class="small">Turning messy scientific data into something that has to be right &mdash; offline ingestion and validation, server-authoritative game state, and being explicit about which surfaces are production-safe versus experimental.</p>
+        </div>
+      </section>
+
+      <p class="footer">Public-safe case study. No app source code, credentials, private repository links, account identifiers, or internal deployment identifiers included.</p>
+    </main>
+  </body>
+</html>

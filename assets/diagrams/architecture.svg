@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Findin architecture diagram</title>
+  <desc id="desc">Scientific provider sources flow through offline ingestion and quality gates into a Supabase catalogue. A separate path shows the browser reading server-authoritative game routes backed by that catalogue.</desc>
+  <rect width="1200" height="520" fill="#efe4cd"/>
+
+  <text x="60" y="56" fill="#211d16" font-family="Georgia, 'Fraunces', serif" font-size="26" font-weight="700">Findin System Shape</text>
+  <text x="60" y="84" fill="#766e55" font-family="Inter, Arial, sans-serif" font-size="15">Provider data becomes playable content offline; gameplay only ever reads the generated catalogue.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <g transform="translate(60 120)">
+      <rect width="300" height="108" rx="10" fill="#fffcf5" stroke="#ddd0b0"/>
+      <text x="20" y="32" fill="#211d16" font-size="17" font-weight="700">Scientific/provider sources</text>
+      <text x="20" y="58" fill="#554f3d" font-size="13">GBIF, PBDB, Wikidata,</text>
+      <text x="20" y="78" fill="#554f3d" font-size="13">Wikipedia, GPlates</text>
+    </g>
+    <g transform="translate(420 120)">
+      <rect width="330" height="108" rx="10" fill="#fffcf5" stroke="#ddd0b0"/>
+      <text x="20" y="32" fill="#211d16" font-size="17" font-weight="700">Offline ingestion + rescue</text>
+      <text x="20" y="58" fill="#554f3d" font-size="13">normalize identity, occurrences,</text>
+      <text x="20" y="78" fill="#554f3d" font-size="13">ranges, evidence</text>
+    </g>
+    <g transform="translate(830 120)">
+      <rect width="310" height="108" rx="10" fill="#fffcf5" stroke="#ddd0b0"/>
+      <text x="20" y="32" fill="#211d16" font-size="17" font-weight="700">Quality gates</text>
+      <text x="20" y="58" fill="#554f3d" font-size="13">taxonomy, WHERE, WHEN,</text>
+      <text x="20" y="78" fill="#554f3d" font-size="13">paleo, Field Notes, media</text>
+    </g>
+
+    <g transform="translate(420 300)">
+      <rect width="330" height="108" rx="10" fill="#fdf2df" stroke="#c97a3a"/>
+      <text x="20" y="32" fill="#211d16" font-size="17" font-weight="700">Supabase runtime catalog</text>
+      <text x="20" y="58" fill="#554f3d" font-size="13">published/playable content and</text>
+      <text x="20" y="78" fill="#554f3d" font-size="13">cached reconstructions</text>
+    </g>
+    <g transform="translate(60 300)">
+      <rect width="300" height="108" rx="10" fill="#fffcf5" stroke="#ddd0b0"/>
+      <text x="20" y="32" fill="#211d16" font-size="17" font-weight="700">Next.js client</text>
+      <text x="20" y="58" fill="#554f3d" font-size="13">Daily, Practice, map/timeline</text>
+      <text x="20" y="78" fill="#554f3d" font-size="13">feedback, reveal</text>
+    </g>
+    <g transform="translate(830 300)">
+      <rect width="310" height="108" rx="10" fill="#fffcf5" stroke="#ddd0b0"/>
+      <text x="20" y="32" fill="#211d16" font-size="17" font-weight="700">Server-authoritative routes</text>
+      <text x="20" y="58" fill="#554f3d" font-size="13">Daily snapshots, sessions,</text>
+      <text x="20" y="78" fill="#554f3d" font-size="13">guesses, results</text>
+    </g>
+  </g>
+
+  <g stroke="#c97a3a" stroke-width="2.2" fill="none" opacity="0.9" marker-end="url(#arrow)">
+    <path d="M360 174 H420"/>
+    <path d="M750 174 H830"/>
+    <path d="M985 228 V300"/>
+    <path d="M420 354 H360"/>
+    <path d="M750 354 H830"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="5" orient="auto">
+      <path d="M1 1 L8 5 L1 9 Z" fill="#c97a3a"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="470" fill="#766e55" font-family="Inter, Arial, sans-serif" font-size="13">Left arrow: catalog serves the client and the server routes. Public-safe diagram: no repository links, credentials, hostnames, or internal deployment identifiers.</text>
+</svg>
