@@ -12,15 +12,19 @@ This folder is a standalone, recruiter-safe showcase package for the private Fin
 - `pdf/case-study.html` - PDF-ready one-page recruiter version.
 - `pdf/case-study.pdf` - generated PDF.
 
-## Verified Audit Snapshot (2026-09-16)
+## Verified Audit Snapshot
 
-- Typecheck: passed, no errors.
-- Lint: passed (3 warnings, all in local `.tmp/` scratch scripts, not app code).
-- Tests: 53 test files passed, 328 tests passed.
-- Production build: passed, 29 app routes generated.
-- Content catalog: 578 total candidates (282 prehistoric, 296 modern) - 80 published/playable, 493 review-required.
-- Launch manifest: 60 species specifically reviewed and verified (`scripts/content/manifests/launch-60.json`), a curated subset of the 80 published rows.
-- Live demo: `https://findin.world` - the older documented Railway URL (`findin.up.railway.app`) is retired and returns HTTP 404, but `railway status` shows the actual service Online on the custom domain, and `/`, `/daily`, `/practice`, and `/leaderboard` all returned 200 there on 2026-09-16 (a live render of `/daily` showed the same Daily Creature #259 as the local screenshot, confirming it's the same environment).
+Refreshed 2026-10-02 from the project's latest passing CI run on its default branch (29 September 2026) and its launch manifest:
+
+- Typecheck, lint, tests, production build and a production-dependency audit: all passed in CI.
+- Tests: 350 passed across 58 test files.
+- Production build: 31 static pages generated.
+- Launch manifest: 60 species specifically reviewed and verified (`scripts/content/manifests/launch-60.json`).
+- Live demo: `https://findin.world` returned 200 for `/`, `/daily`, `/practice` and `/leaderboard` on 2026-10-02.
+
+Not refreshed, kept as a dated snapshot (2026-09-16): the content catalogue counts of 578 total candidates (282 prehistoric, 296 modern), 80 published/playable and 493 review-required. Refreshing them needs a read of the production content database.
+
+`index.html` reads the tests and verified-species figures live from the profile stats feed (`stats/data.json` in the public profile repository) and falls back to the values above if the feed is unreachable.
 
 ## Public-Safety Notes
 
