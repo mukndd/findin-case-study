@@ -24,8 +24,6 @@ Refreshed 2026-10-02 from the project's latest passing CI run on its default bra
 
 Not refreshed, kept as a dated snapshot (2026-09-16): the content catalogue counts of 578 total candidates (282 prehistoric, 296 modern), 80 published/playable and 493 review-required. Refreshing them needs a read of the production content database.
 
-`index.html` reads the tests and verified-species figures live from the profile stats feed (`stats/data.json` in the public profile repository) and falls back to the values above if the feed is unreachable.
-
 ## Public-Safety Notes
 
 This export intentionally excludes:
